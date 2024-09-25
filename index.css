@@ -1,0 +1,23 @@
+body {
+    background: #EFCDB8;
+}
+
+
+#capivara {
+    position: relative;
+    margin-top: 50px;
+    right: 20px; 
+    }
+
+    #categorias{
+    position: relative;
+    margin-top: 50px;
+    left: 30px; 
+    }
+    
+    .barra-de-icones {
+        width: 285px;
+        margin-top: 50px;
+       
+       
+    }
