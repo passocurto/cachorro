@@ -1,21 +1,9 @@
 <?php
 
-// configurações para conexão com o banco de dados.
-$server   = "localhost";
-$user     = "root";
-$password = "";
-$database   = "loja_virtual";
-
-// Criar conexão
-$conn = new mysqli($server, $user, $password, $database);
-
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
+include '../util/resources.php'; 
 
 // Consulta SQL
-$sql = "SELECT * FROM clientes";
+$sql = "SELECT * FROM animal";
 
 // Executar a consulta
 $result = $conn->query($sql);
@@ -33,19 +21,23 @@ $result = $conn->query($sql);
 </head>
 <body>
 
+
 <div class="col col-lg-2">
     <?php include '../sidebar.php'; ?>
-  </div>
+</div>
+
+<div class="row">
+<a href="create.php" class="btn btn-primary">Cadastrar</a>        
 <div class="container">
-    <div class="row">
-    <div class="col col-6">
-  <p>Crud Inicial:</p>            
-  <a href="create.php" class="btn btn-primary">Cadastrar</a>
+    
+<div class="col col-6">
+
   <table class="table">
     <thead>
-      <tr>
-        <th>id_cliente</th>
+    <tr>
+        <th>ID</th>
         <th>nome</th>
+        <th>tipo</th>
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
@@ -53,12 +45,13 @@ $result = $conn->query($sql);
     <tbody>
       <?php
       $table ='';
-        while($client = $result->fetch_assoc()) {
+        while($animais = $result->fetch_assoc()) {
           $table .= '<tr>';
-              $table .= "<td>{$client["id_cliente"]}</td>";
-              $table .= "<td>{$client["nome"]}</td>";
-              $table .= "<td><a href=\"editar.php?id={$client["id_cliente"]}\" class=\"btn btn-warning\">Editar</a></td>
-          <td><a href=\"deletar.php?id={$client["id_cliente"]}\" type=\"button\" class=\"btn btn-danger\">Excluir</button></td>";
+              $table .= "<td>{$animais["id_animal"]}</td>";
+              $table .= "<td>{$animais["nome"]}</td>";
+              $table .= "<td>{$animais["tipo"]}</td>";
+              $table .= "<td><a href=\"editar.php?id={$animais["id_animal"]}\" class=\"btn btn-warning\">Editar</a></td>
+          <td><a href=\"deletar.php?id={$animais["id_animal"]}\" type=\"button\" class=\"btn btn-danger\">Excluir</button></td>";
           $table .= '</tr>';
         }
         echo $table;
@@ -68,6 +61,5 @@ $result = $conn->query($sql);
 </div>
 </div>
 </div>
-
 </body>
 </html>
