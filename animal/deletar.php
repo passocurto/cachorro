@@ -1,26 +1,15 @@
 <?php
 
-// configurações para conexão com o banco de dados.
-$server   = "localhost";
-$user     = "root";
-$password = "";
-$database   = "loja_virtual";
+include '../util/resources.php'; 
 
-// Criar conexão
-$conn = new mysqli($server, $user, $password, $database);
-
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
 $id = $_GET['id'];
 // Consulta SQL
-$sql = "SELECT * FROM pedidos WHERE id_pedido = $id";
+$sql = "SELECT * FROM animal WHERE id_animal = $id";
 
 // Executar a consulta
 $result = $conn->query($sql);
 
-$cidade = $result->fetch_assoc();
+$animal = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +27,11 @@ $cidade = $result->fetch_assoc();
 <div class="container">
 <form action="functions.php" method="POST">
   <div class="form-group">
-    <label for="Nome">pedidos</label>
-    <input type="text" class="form-control" readonly value="<?php echo  $cidade['id_pedido'] ?>" name="id" id="id" >
-    <input type="text" class="form-control" readonly value="<?php echo  $cidade['data_pedido'] ?>" name="data" id="data" >
-    <input type="text" class="form-control" readonly value="<?php echo  $cidade['id_cliente'] ?>" name="id" id="id" >
+    <label for="Nome">Animal</label>
+    <input type="text" class="form-control" readonly value="<?php echo  $animal['id_animal'] ?>" name="id" id="id" >
+    <input type="text" class="form-control" readonly value="<?php echo  $animal['nome'] ?>" name="nome" id="nome" >
+    <input type="text" class="form-control" readonly value="<?php echo  $animal['tipo'] ?>" name="tipo" id="tipo" >
+    <input type="text" class="form-control" readonly value="<?php echo  $animal['dtNacimento'] ?>" name="dtNacimento" id="dtNacimento" >
     <input type="text" class="hide" name="deletar" id="deletar"  value="deletar">
   </div>
   

@@ -1,19 +1,12 @@
 <?php
 
-include '../util/resources.php'; 
+  include '../util/resources.php'; 
 
-// Consulta SQL
-$sql = "SELECT * FROM clientes";
+  // Consulta SQL
+  $sql = "SELECT * FROM animal";
 
-// Executar a consulta
-$resultCliente = $conn->query($sql);
-
-
-// Consulta SQL
-$sql = "SELECT * FROM produtos";
-
-// Executar a consulta
-$resultProdutos = $conn->query($sql);
+  // Executar a consulta
+  $resultanimal = $conn->query($sql);
 
 ?>
 
@@ -33,71 +26,30 @@ $resultProdutos = $conn->query($sql);
 
 <div class="container">
 <form action="functions.php" method="POST">
+
+<div class="form-group">
+    <label for="Nome">Nome do animal</label>
+    <input type="text" class="form-control" value="" name="nome" id="nome" >
+  </div>
+
   <div class="form-group">
-    <label for="Nome">Faça seu pedido</label>
-    <select class="form-select" aria-label="Default select example">
-      <?php  while($client = $resultCliente->fetch_assoc()) {?>
-        <option value="<?php echo $client["id_cliente"] ?>"><?php echo $client["nome"] ?></option>
-      <?php } ?>
+    <label for="tipo">Tipo</label>
+    <select class="form-control form-select" aria-label="Default select example" name="tipo" id="tipo">
+      <option value="Cachorro">Cachorro</option>
+      <option value="Gato">Gato</option>
     </select>
   </div>
 
-  <div class="input-group mb-3">
-  <select class="form-select" aria-label="Default select example">
-    <?php  while($client = $resultProdutos->fetch_assoc()) {?>
-        <option value="<?php echo $client["id_produto"] ?>"><?php echo $client["nome"] ?></option>
-    <?php } ?>
-    </select>
-    <span style="margin:0 6px 0 6px"> Quantidade </span>
-    <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade">
-    <span style="margin:0 6px 0 6px"><button type="button" class="btn btn-dark">adicionar ao pedido</button></span>
+  <div class="form-group">
+    <label for="dtNacimento">Data de Nacimento</label>
+    <input type="date" class="form-control" value="" name="dtNacimento" id="dtNacimento" >
   </div>
+  
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+  <a href="index.php" class="btn btn-primary">Voltar</a>
 
-  <div> 
-
-    </div>
-  <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Cliente</th>
-      <th scope="col">Produtos</th>
-      <th scope="col">Quantidade</th>
-      <th scope="col">Preço</th>
-      <th scope="col">Editar</th>
-      <th scope="col">Excluir</th>
-      
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <th><button type="button" class="btn btn-primary">Editar</button><th>
-      <th><button type="button" class="btn btn-danger">Excluir</button><th> 
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <th><button type="button" class="btn btn-primary">Editar</button><th>
-      <th><button type="button" class="btn btn-danger">Excluir</button><th> 
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <th><button type="button" class="btn btn-primary">Editar</button><th>
-      <th><button type="button" class="btn btn-danger">Excluir</button><th> 
-    </tr>
-    </table>
-  <button type="submit" class="btn btn-primary">Registrar Pedido</button>
-  <a href="index.php" class="btn btn-primary">Cancelar Pedido</a>
 </form>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

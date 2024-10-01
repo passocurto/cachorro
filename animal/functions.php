@@ -1,63 +1,53 @@
 <?php
 
-// configurações para conexão com o banco de dados.
-$server   = "localhost";
-$user     = "root";
-$password = "";
-$database   = "loja_virtual";
-
-// Criar conexão
-$conn = new mysqli($server, $user, $password, $database);
-
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
+include '../util/resources.php'; 
 
 // Verifica se os dados foram enviados via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recebe os dados do formulário
     if(!isset($_POST["deletar"])){
     $nome = $_POST["nome"];
+    $tipo = $_POST["tipo"];
+    $dtNacimento = $_POST["dtNacimento"];
     
+
     if(!$_POST["id"]){
       // Consulta SQL
-      $sql = "INSERT INTO pedidos (nome) VALUES (\"$nome\")";
+      $sql = "INSERT INTO animal (nome, tipo, dtNacimento) VALUES (\"$nome\", \"$tipo\", \"$dtNacimento\")";
 
       if ($conn->query($sql) === TRUE) {
-          echo "New record created successfully";
+          echo "New animal created successfully";
         } else {
-          echo "Error: " . $sql . "<br>" . $conn->error;
+          echo "Error: " . $sql . "<br>" . $conn->error; 
         }
-        header('Location: http://localhost/loja/pedidos/index.php');
+        header('Location: http://localhost/ricardo/aula/cachorro/animal/');
 
       }else{
 
         $id = $_POST["id"];
 
-        $sql = "UPDATE pedidos SET nome = '".$_POST["nome"]."' WHERE id_pedido = $id";
+        $sql = "UPDATE animal SET nome = '".$_POST["nome"]."', tipo = '".$_POST["tipo"]."', dtNacimento = '".$_POST["dtNacimento"]."' WHERE id_animal = $id";
 
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
-          header('Location: http://localhost/loja/pedidos/index.php');
+          header('Location: http://localhost/ricardo/aula/cachorro/animal/');
 
       }
     }else{
-
-    
+  
         $id = $_POST["id"];
 
-        $sql = "DELETE FROM pedidos WHERE id_pedido = $id";
+        $sql = "DELETE FROM animal WHERE id_animal = $id";
 
         if ($conn->query($sql) === TRUE) {
             echo "Element deleted successfully";
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
-          header('Location: http://localhost/loja/pedidos/index.php');
+          header('Location: http://localhost/ricardo/aula/cachorro/animal/');
       }
     
 }

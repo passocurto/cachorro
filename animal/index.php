@@ -38,6 +38,7 @@ $result = $conn->query($sql);
         <th>ID</th>
         <th>nome</th>
         <th>tipo</th>
+        <th>DtNacimento</th>
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
@@ -50,6 +51,7 @@ $result = $conn->query($sql);
               $table .= "<td>{$animais["id_animal"]}</td>";
               $table .= "<td>{$animais["nome"]}</td>";
               $table .= "<td>{$animais["tipo"]}</td>";
+              $table .= "<td>{$animais["dtNacimento"]}</td>";
               $table .= "<td><a href=\"editar.php?id={$animais["id_animal"]}\" class=\"btn btn-warning\">Editar</a></td>
           <td><a href=\"deletar.php?id={$animais["id_animal"]}\" type=\"button\" class=\"btn btn-danger\">Excluir</button></td>";
           $table .= '</tr>';
