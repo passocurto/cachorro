@@ -5,7 +5,9 @@
             <li class="nav-item">
                 <a class="nav-link active" href="../animal">Animal</a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link active" href="../tutor">Tutor</a>
+            </li>
             
         </ul>
     </div>

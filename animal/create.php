@@ -1,15 +1,3 @@
-<?php
-
-  include '../util/resources.php'; 
-
-  // Consulta SQL
-  $sql = "SELECT * FROM animal";
-
-  // Executar a consulta
-  $resultanimal = $conn->query($sql);
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">

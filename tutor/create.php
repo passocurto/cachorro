@@ -1,20 +1,4 @@
-<?php
 
-// configurações para conexão com o banco de dados.
-$server   = "localhost";
-$user     = "root";
-$password = "";
-$database   = "loja_virtual";
-
-// Criar conexão
-$conn = new mysqli($server, $user, $password, $database);
-
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +15,16 @@ if ($conn->connect_error) {
 <div class="container">
 <form action="functions.php" method="POST">
   <div class="form-group">
-    <label for="Nome">Nome do cliente</label>
+    <label for="Nome">Nome do Tutor</label>
     <input type="text" class="form-control" value="" name="nome" id="nome" >
+  </div>
+  <div class="form-group">
+    <label for="Nome">CPF</label>
+    <input type="text" class="form-control" value="" name="cpf" id="cpf" >
+  </div>
+  <div class="form-group">
+    <label for="Nome">Data de Nascimento</label>
+    <input type="date" class="form-control" value="" name="dtNascimento" id="dtNascimento" >
   </div>
   
   <button type="submit" class="btn btn-primary">Cadastrar</button>

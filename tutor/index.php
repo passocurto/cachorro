@@ -1,21 +1,9 @@
 <?php
 
-// configurações para conexão com o banco de dados.
-$server   = "localhost";
-$user     = "root";
-$password = "";
-$database   = "loja_virtual";
-
-// Criar conexão
-$conn = new mysqli($server, $user, $password, $database);
-
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
+include '../util/resources.php'; 
 
 // Consulta SQL
-$sql = "SELECT * FROM clientes";
+$sql = "SELECT * FROM tutor";
 
 // Executar a consulta
 $result = $conn->query($sql);
@@ -38,16 +26,14 @@ $result = $conn->query($sql);
 <div class="container">
     <div class="row">
     <div class="col col-6">
-      <p>Crud Inicial:</p>            
       <a href="create.php" class="btn btn-primary">Cadastrar</a>
       <table class="table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>nome</th>
-            <th>telefone</th>
-            <th>E-mail</th>
-            <th>Endereço</th>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Nascimento</th>
             <th>Editar</th>
             <th>Excluir</th>
           </tr>
@@ -55,15 +41,14 @@ $result = $conn->query($sql);
         <tbody>
           <?php
           $table ='';
-            while($client = $result->fetch_assoc()) {
+            while($tutor = $result->fetch_assoc()) {
               $table .= '<tr>';
-                  $table .= "<td>{$client["id_cliente"]}</td>";
-                  $table .= "<td>{$client["nome"]}</td>";
-                  $table .= "<td>{$client["telefone"]}</td>";
-                  $table .= "<td>{$client["email"]}</td>";
-                  $table .= "<td>{$client["endereco"]}</td>";
-                  $table .= "<td><a href=\"editar.php?id={$client["id_cliente"]}\" class=\"btn btn-warning\">Editar</a></td>
-              <td><a href=\"deletar.php?id={$client["id_cliente"]}\" type=\"button\" class=\"btn btn-danger\">Excluir</button></td>";
+                  $table .= "<td>{$tutor["id_tutor"]}</td>";
+                  $table .= "<td>{$tutor["nome"]}</td>";
+                  $table .= "<td>{$tutor["cpf"]}</td>";
+                  $table .= "<td>{$tutor["dtNascimento"]}</td>";
+                  $table .= "<td><a href=\"editar.php?id={$tutor["id_tutor"]}\" class=\"btn btn-warning\">Editar</a></td>
+              <td><a href=\"deletar.php?id={$tutor["id_tutor"]}\" type=\"button\" class=\"btn btn-danger\">Excluir</button></td>";
               $table .= '</tr>';
             }
             echo $table;
