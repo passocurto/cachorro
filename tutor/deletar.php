@@ -5,7 +5,7 @@ include '../util/resources.php';
 
 $id = $_GET['id'];
 // Consulta SQL
-$sql = "SELECT * FROM clientes WHERE id_cliente = $id";
+$sql = "SELECT * FROM tutor WHERE id_tutor = $id";
 
 // Executar a consulta
 $result = $conn->query($sql);
@@ -29,7 +29,7 @@ $cidade = $result->fetch_assoc();
 <form action="functions.php" method="POST">
   <div class="form-group">
     <label for="id">ID</label>
-    <input type="text" class="form-control" readonly value="<?php echo  $cidade['id_cliente'] ?>" name="id" id="id" >
+    <input type="text" class="form-control" readonly value="<?php echo  $cidade['id_tutor'] ?>" name="id" id="id" >
     <label for="nome">Nome</label>
     <input type="text" class="form-control" readonly value="<?php echo  $cidade['nome'] ?>" name="nome" id="nome" >
     <label for="telefone">Telefone</label>

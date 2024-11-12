@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
         }
-        header('Location: http://localhost/loja/categoria/index.php');
+        header('Location: http://aula.kesug.com/categoria/index.php');
 
       }else{
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
-          header('Location: http://localhost/loja/categoria/index.php');
+          header('Location: http://aula.kesug.com/categoria/index.php');
 
       }
     }else{
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
-          header('Location: http://localhost/loja/categoria/index.php');
+          header('Location: http://aula.kesug.com/categoria/index.php');
       }
     
 }

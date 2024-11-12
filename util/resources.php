@@ -1,9 +1,9 @@
 <?php 
     // configurações para conexão com o banco de dados.
-    $server   = "localhost";
-    $user     = "root";
-    $password = "";
-    $database   = "PetControl";
+    $server   = "sql102.infinityfree.com";
+    $user     = "if0_37692417";
+    $password = "Farofa00";
+    $database   = "if0_37692417_petcontrol";
 
     // Criar conexão
     $conn = new mysqli($server, $user, $password, $database);
